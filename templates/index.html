@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALPR Web App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2em auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2em;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1em;
+        }
+
+        input[type="file"] {
+            border: 1px solid #ddd;
+            padding: 0.5em;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.6em 2em;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f8f9fa;
+            margin: 0.5em 0;
+            padding: 0.8em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        img, video {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1em auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        footer {
+            text-align: center;
+            margin: 2em 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .instructions {
+            text-align: center;
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 1.5em;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1em;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1em;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+            text-align: center;
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Automatic License Plate Recognition (ALPR) Web App</h1>
+    </header>
+
+    <div class="container">
+        <div class="instructions">
+            <p>Upload an image or video to detect license plates and preview results.</p>
+        </div>
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*,video/*" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if license_plate_texts %}
+<h2>Detected License Plates</h2>
+<ul>
+    {% for text, confidence in license_plate_texts %}
+    {% if confidence > 0 %}
+    <li>Plate: <span class="highlight">{{ text }}</span> (Confidence: {{ confidence }})</li>
+    {% else %}
+    <li>Plate: <span class="highlight">{{ text }}</span> (Confidence: Low)</li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% else %}
+<div class="error-message">
+    <p>No license plates detected in the uploaded file.</p>
+</div>
+{% endif %}
+
+{% if processed_image %}
+<h2>Processed Image with License Plates</h2>
+<img src="{{ processed_image }}" alt="Processed Image with Bounding Boxes">
+{% else %}
+<div class="error-message">
+    <p>No processed image to display.</p>
+</div>
+{% endif %}
+
+
+
+        <footer>
+            <p>&copy; 2024 ALPR App. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

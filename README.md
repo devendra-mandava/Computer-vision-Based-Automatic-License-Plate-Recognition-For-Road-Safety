@@ -1,1 +1,0 @@
-# Computer-vision-Based-Automatic-License-Plate-Recognition-For-Road-Safety
