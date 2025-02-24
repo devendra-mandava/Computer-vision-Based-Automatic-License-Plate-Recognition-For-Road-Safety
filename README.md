@@ -1,4 +1,4 @@
-# ALPR Web Application  
+# Computer Vision Based Automatic Licence Plate Recognition for Road Safety
 
 ## Overview  
 This project is a web-based **Automatic License Plate Recognition (ALPR)** system that detects vehicles and license plates in images or videos and extracts text from the plates using **computer vision and deep learning**.  
