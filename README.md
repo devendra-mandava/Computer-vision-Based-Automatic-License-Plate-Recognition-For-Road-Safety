@@ -129,4 +129,5 @@ chmod +x run.sh
 ## License  
 This project is licensed under the MIT License.  
 
-🚗 **Enjoy using the ALPR Web App!** 🚀  
+🚗 ## Report  
+For a detailed report on the project, please visit [Report Link](./dmanda_final_Report.pdf).  🚀  
