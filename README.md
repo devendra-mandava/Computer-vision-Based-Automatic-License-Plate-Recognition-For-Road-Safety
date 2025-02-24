@@ -24,7 +24,7 @@ This project is a web-based **Automatic License Plate Recognition (ALPR)** syste
 ```
 
 ## Prerequisites  
-Ensure you have the following installed before running the project:  
+Ensure you have the following installed before running the project:
 - **Python 3.8+**  
 - **pip**  
 - **Flask**  
@@ -36,8 +36,8 @@ Ensure you have the following installed before running the project:
 
 ### Step 1: Clone the Repository  
 ```bash
-git clone https://github.com/your-repo-name/ALPR-WebApp.git
-cd ALPR-WebApp
+git clone https://github.com/devendra-mandava/Computer-vision-Based-Automatic-License-Plate-Recognition-For-Road-Safety.git
+
 ```
 
 ### Step 2: Create and Activate a Virtual Environment  
